@@ -140,11 +140,14 @@ def obtenerIndicesListaVectore(vector1,vector2,vector3):
         if(verificar_aux(vector1)):
             if(verificar_aux(vector2)):
                 if(verificar_aux(vector3)):
-                    if(tamaño_aux(vector1,vector2,vector3)==1):
-                        indice1=indices_aux(vector1,0,[])
-                        indice2=indices_aux(vector2,0,[])
-                        indice3=indices_aux(vector3,0,[])
-                        return [indice1]+[indice2]+[indice3]
+                    if(tamaño_aux(vector1,0)==tamaño_aux(vector2,0)):
+                        if(tamaño_aux(vector2,0)==tamaño_aux(vector3,0)):
+                            indice1=indices_aux(vector1,0,[])
+                            indice2=indices_aux(vector2,0,[])
+                            indice3=indices_aux(vector3,0,[])
+                            return [indice1]+[indice2]+[indice3]
+                        else:
+                            return "Error,el vector3 tiene distinto tamaño."
                     else:
                         return f"ERROR,tamaños distintos de los vectores"
                 else:
@@ -167,15 +170,11 @@ def verificar_aux(vector):
         else:
             return False
 
-def tamaño_aux(vector1,vector2,vector3):
-    if(vector1==[])or vector2==[] or vector3==[]:
-        if(vector1==[])and vector2==[] and vector3==[]:
-            return True
-        else:
-            return False
-
+def tamaño_aux(vector1,cont):
+    if(vector1==[]):
+        return cont
     else:
-        return tamaño_aux(vector1[1:],vector2[1:],vector3[1:])
+        return tamaño_aux(vector1[1:],cont+1)
 
 def indices_aux(vector,cont,result):
     if(vector==[]):
