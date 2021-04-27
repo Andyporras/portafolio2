@@ -95,6 +95,7 @@ def eliminarDigito_aux(num,sacar,result):
 nombre: nivelesLista
 entrada: una lista con sub lista
 salida: cantidad de sublista que contiene la lista
+restricciones: debe ser una lista el dato de entrada.
 """
 
 
